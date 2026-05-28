@@ -1,27 +1,27 @@
 # Source Map
 
-Use este arquivo para mapear seus trabalhos do MIT para o artigo.
+Use this file to map MIT work into the article.
 
-## Trabalhos MIT
+## MIT Work
 
-| Curso/Projeto | Arquivo/Fonte | Tema | Metodo | Possivel Secao |
+| Course/Project | File/Source | Topic | Method | Possible Section |
 | --- | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD | TBD |
 
-## Perguntas Para Definir o Artigo
+## Questions to Define the Article
 
-1. Qual sera a tese central do artigo?
-2. Quais trabalhos do MIT devem entrar como casos principais?
-3. O artigo sera mais academico, executivo ou metodologico?
-4. Ha dados, figuras ou resultados quantitativos que podem ser publicados?
-5. Existe alguma restricao de confidencialidade nos trabalhos originais?
+1. What is the central thesis of the article?
+2. Which MIT work should be used as the main case evidence?
+3. Should the article be academic, executive-facing, methodological, or a mix?
+4. Are there publishable data, figures, or quantitative results?
+5. Are there confidentiality restrictions in the original work?
 
-## Padrao arXiv
+## arXiv Pattern
 
-- Titulo claro e especifico.
-- Abstract curto, com problema, metodo, contribuicao e resultado.
-- Introducao com contribuicoes explicitas.
-- Secoes numeradas e estrutura logica.
-- Referencias em BibTeX.
-- Figuras em arquivos separados, preferencialmente PDF, PNG ou EPS.
-- PDF final gerado a partir de LaTeX.
+- Clear and specific title.
+- Short abstract with problem, method, contribution, and result.
+- Introduction with explicit contributions.
+- Numbered sections and logical structure.
+- References in BibTeX.
+- Figures stored as separate files, preferably PDF, PNG, or EPS.
+- Final PDF generated from LaTeX.

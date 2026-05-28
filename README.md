@@ -1,24 +1,26 @@
 # Systems Design and Management Article
 
-Projeto para escrever um artigo em estilo arXiv a partir de trabalhos realizados no MIT em Systems Design and Management.
+Project for writing an arXiv-style article based on MIT Systems Design and Management work.
 
-## Estrutura
+## Structure
 
-- `main.tex`: manuscrito principal em LaTeX.
-- `sections/`: seções do artigo.
-- `references/references.bib`: bibliografia em BibTeX.
-- `figures/`: figuras, diagramas e tabelas exportadas.
-- `notes/source-map.md`: mapa dos trabalhos do MIT que serão usados no artigo.
+- `main.tex`: main LaTeX manuscript.
+- `sections/`: article sections.
+- `references/references.bib`: BibTeX bibliography.
+- `references/bibliography.md`: human-readable bibliography.
+- `figures/`: exported figures, diagrams, and tables.
+- `notes/source-map.md`: map of MIT work used in the article.
+- `opportunity-sets/`: MIT SDM opportunity-set source materials.
 
-## Compilação
+## Compilation
 
-Se houver uma distribuição LaTeX instalada:
+If a LaTeX distribution is installed:
 
 ```bash
 latexmk -pdf main.tex
 ```
 
-Alternativa:
+Alternative:
 
 ```bash
 pdflatex main.tex
@@ -27,6 +29,6 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
-## Próximo Passo
+## Next Step
 
-Preencher `notes/source-map.md` com os cursos, papers, projetos e entregáveis do MIT que devem servir de base para o artigo.
+Fill `notes/source-map.md` with the MIT courses, papers, projects, and deliverables that should support the article.
