@@ -1,0 +1,43 @@
+\section{Case study: Sanguine}
+
+The case is Sanguine, a physician-facing clinical interpretation layer for Mayo Clinic laboratory results developed during the MIT SDM integrated core. The project began with a broad opportunity: Mayo Clinic Laboratories produces high-quality tests at large scale, including for external patients and physicians, but the result-delivery layer often looks like a commodity report. A result may include a value, a flag, and a reference range. The clinical interpretation still depends on the physician's ability to connect that result to patient history, prior results, current evidence, and specialist knowledge.
+
+The working system problem statement became: improve Mayo Clinic laboratory patient care outcomes at scale by augmenting physician-facing test results with relevant research using an agentic AI clinical librarian \cite{sanguine_os11,sanguine_os13}. This boundary mattered. Earlier versions of the concept included patient-facing communication, result explanation, follow-up support, and broader care navigation. Those ideas were not wrong, but they pulled the project toward a general medical assistant. The narrower boundary made the design problem more tractable and reduced liability: Sanguine would support physicians, not replace them or diagnose patients directly.
+
+\subsection{Stakeholders and needs}
+
+The stakeholder map included patients, external physicians, Mayo Clinic Laboratories, Mayo physicians, Mayo leadership, legal and compliance teams, regulators, software developers, lab technicians, insurers, and researchers \cite{sanguine_charter,sanguine_os9}. The early analysis surfaced a point that remained stable across the project: legal and regulatory stakeholders were not merely late-stage reviewers. They shaped the feasible design space.
+
+Patients needed clearer interpretation, reassurance, and better preparation for conversations with clinicians. External physicians needed specialty-informed material without extra workflow burden. Mayo Clinic leadership needed a path that could scale the Mayo Clinic Model of Care without damaging trust. Legal and regulatory stakeholders needed evidence of compliance, traceability, and accountability. These needs led to metrics such as clinical accuracy, physician time-to-insight, compliance evidence coverage, patient comprehension, and cost per interpreted result \cite{sanguine_os11}.
+
+\subsection{Architecture decisions}
+
+The architecture work translated stakeholder needs into a small set of decisions. Six decisions carried most of the architectural weight: model origin, research paradigm, number of AI roles per result, data sources, clinical validation and release control, and model specification \cite{sanguine_os13}. Other decisions, such as communication channel and low-level integration mechanism, were treated as design details once their sensitivity and coupling appeared lower.
+
+The preferred architecture used a Gemini-family model on Google Cloud, retrieval-augmented generation plus fine-tuning, a large group of specialized AI roles, multiple internal and external clinical sources, tiered release control, and a powerful multimodal model for complex reasoning. The concept was called ``Maximalist'' in the course work, but the name is a little misleading. It was not maximal in every direction. It was maximal where reliability, grounding, and clinical review mattered most, while avoiding the cost of full human review for every result.
+
+The most important design choice was not the model family. It was the control structure around interpretation. A single chatbot-like assistant was cheap, but weakly grounded. A fully human-reviewed model matched current clinical assurance but did not scale. Sanguine sat between those poles: multiple specialist roles generated and reconciled an interpretation, evidence was traceable, and rare or complex cases escalated through tiered release control.
+
+\subsection{Tradespace exploration under uncertainty}
+
+The deterministic tradespace compared candidate architectures by estimated clinical accuracy and cost per interpreted result \cite{sanguine_os13}. Low-cost concepts resembled current portal or rule-based result delivery. They were inexpensive but offered limited interpretive support. Human-in-the-loop concepts offered high assurance, but their cost scaled with physician review time. The preferred region combined AI-supported interpretation, evidence retrieval, role decomposition, and partial escalation.
+
+The next step added uncertainty through Monte Carlo simulation \cite{sanguine_os14}. Accuracy was modeled with beta distributions because it is bounded between zero and one. Cost was modeled with log-normal or triangular distributions because operational costs are positive and often right-skewed. The uncertainty analysis changed the reading of the tradespace. Heavy compliance concepts looked attractive in deterministic comparison, but became less attractive once escalation queues, review-load variability, and high-tier model usage were included. C1, the preferred ``Maximalist'' concept, and C6, a more customizable concept, remained robust candidates.
+
+The analysis showed that clinical accuracy was most sensitive to AI role decomposition, data-source coverage, and release control. Cost per result was most sensitive to release control, model origin, and model specification \cite{sanguine_os14}. This is a useful result because it tells a project team where not to pretend. The team could not resolve the whole architecture by choosing a better model. It had to learn how much evidence diversity helped, how specialist roles interacted, and what escalation rate the clinical workflow could tolerate.
+
+\subsection{Development model and baseline}
+
+The development plan combined stage gates, agile delivery, and spiral risk reduction \cite{sanguine_os15,sanguine_os16}. Stage gates kept the program aligned with clinical, regulatory, and launch milestones. Agile delivery supported software development across data, AI, cloud, interface, and quality teams. Spiral elements were used around high-uncertainty areas such as multi-agent interpretation, data harmonization, and release control.
+
+The initial project model used teams, tasks, phases, products, productivity multipliers, and dependencies. Ten project variants were compared. Full outsourcing lowered labor cost but increased schedule duration because coordination overhead dominated. Overtime did not help once burnout was modeled. Workforce growth compressed schedule but at a steep cost. Strategic scaling, which added contractors only to non-critical development bottlenecks while keeping core functions internal, became the preferred baseline at about \$4.69M and 43 weeks \cite{sanguine_os16}.
+
+That result did not survive the final risk pass unchanged. Risk modeling identified seven major risks: EHR/lab integration failure, AI clinical accuracy failure, IRB or regulatory delay, patient data compliance failure, clinical validation bottleneck, late interface rework, and team knowledge loss \cite{sanguine_os17}. The first risk model was too elaborate, with arbitrary risk functions and cascading tasks. The team simplified it to effect and probability. That simpler model was easier to explain and use.
+
+The full mitigation plan added early interface testing, data integration feasibility work, clinical validation readiness, regulatory pre-submission, and PHI compliance review. Residual risk fell from 179 to about 75, a 58\% reduction, but the plan moved from roughly \$4.8M and 46 weeks to \$7.1M and 50 weeks \cite{sanguine_os17}. The decision was not Pareto-optimal in cost and schedule alone. It became defensible only when residual risk was treated as a third planning dimension.
+
+\subsection{Final recommendation}
+
+The executive recommendation was to authorize a \$7.1M, 50-week implementation program, with a prototype in Q4 2026, a private pilot in Q1 2027, and a controlled US launch for three test types in Q3 2027 \cite{sanguine_memo}. The recommendation required three institutional commitments: Mayo IT capacity for controlled access to clinical and laboratory systems, regulatory and IRB preparation capacity, and physician reviewer availability for shadow-mode validation.
+
+The case ends with a managerial lesson rather than a technical punchline. For clinical AI, the cheapest plan that appears feasible may depend on a long chain of risks not materializing. Once patient safety, clinical trust, regulatory approval, and institutional reputation are included, front-loaded mitigation is not overhead. It is part of the system design.

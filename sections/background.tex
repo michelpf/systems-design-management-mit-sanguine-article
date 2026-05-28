@@ -1,0 +1,9 @@
+\section{Background}
+
+MIT describes SDM as an integrated approach to architecting, engineering, and managing complex products and systems \cite{mit_sdm_what,mit_sdm_core}. The integrated core emphasizes system architecture, systems engineering, and project management. That mix is useful for AI in health care because the system boundary rarely stops at the algorithm. It includes data access, clinical workflow, evidence management, validation, release policy, operational monitoring, and institutional responsibility.
+
+The Sanguine project sits in a specific class of systems: AI-enabled clinical decision support. These systems are not pure automation. They sit between information production and professional judgment. A laboratory result is already a clinical artifact, but its value depends on interpretation. The design question is therefore not simply, ``Can AI explain a result?'' The better question is, ``What kind of interpretive layer can increase clinical value without weakening safety, accountability, or workflow fit?''
+
+Several system concepts are useful here. System architecture connects function, form, and concept \cite{crawley2015system}. Tradespace exploration makes competing architectures visible by comparing performance, cost, risk, and constraints. Design structure matrices help identify coupled decisions and change-propagation paths. Lifecycle thinking forces the team to consider validation, operation, adaptation, and eventual replacement rather than only launch. Risk management keeps the design honest by asking what happens if assumptions fail.
+
+The case also draws on a common SDM pattern: start broad enough to understand the problem, then narrow the boundary enough to build a defensible architecture. That narrowing is not a loss of ambition. It is a design decision.

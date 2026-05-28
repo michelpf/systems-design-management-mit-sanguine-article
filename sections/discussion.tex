@@ -1,0 +1,31 @@
+\section{Discussion}
+
+The Sanguine case is useful because it resists the usual AI shortcut. The answer is not ``use a better model.'' The model matters, but the system is shaped just as much by evidence access, validation policy, physician workflow, regulatory timing, and the cost of being wrong.
+
+\subsection{Boundary choice was a risk-control mechanism}
+
+The project began with a broad ambition to improve patient understanding of lab results. Over time, the boundary moved toward a physician-facing clinical librarian. That change reduced the apparent surface area of the product, but it made the architecture stronger. A patient-facing AI explanation system would have carried a different liability profile, stronger communication requirements, and a higher chance of being interpreted as medical advice. The physician-facing boundary preserved the core value of better interpretation while keeping final judgment inside the clinical workflow.
+
+\subsection{Governance was architectural}
+
+In many software projects, governance is treated as process around the system. In this case, governance became part of the architecture. Tiered release control, audit trails, shadow-mode validation, PHI handling, and escalation rules were not compliance afterthoughts. They determined whether the system could be trusted and whether it could scale.
+
+This is one of the clearer SDM lessons from the case. Architecture is not only about components. It is about the allocation of responsibility across humans, machines, institutions, and rules.
+
+\subsection{Uncertainty changed the preferred design}
+
+The deterministic tradespace made high-assurance concepts look attractive. The uncertainty model complicated that view. Concepts with more human review had higher assurance, but they also had more cost variance and operational sensitivity. Escalation queues are not a detail in a clinical AI system. They are part of the product's ability to operate.
+
+The result was not a rejection of human review. It was a more precise use of it. Tiered release control became preferable because it treated review capacity as scarce and directed it toward rare, ambiguous, or high-risk cases.
+
+\subsection{Risk mitigation changed the baseline}
+
+The project model initially favored strategic scaling: targeted contractors for bottleneck development tasks, internal ownership of core clinical and integration work, and a 43-week baseline under the \$6M budget target. After risk analysis, that plan was no longer enough. The full mitigation baseline cost more and used the available schedule margin, but it reduced residual risk by more than half.
+
+That shift is easy to criticize if cost and schedule are the only axes. It is much harder to criticize once patient safety and institutional trust are included. The lower-cost plan implicitly required several bad events not to happen. The higher-cost plan bought down the risks most likely to block clinical validation: integration failure, hallucination or accuracy failure, regulatory delay, PHI compliance gaps, and late interface rework.
+
+\subsection{Limits of the case}
+
+This article is based on project work and planning models, not on a deployed clinical system. The cost estimates, accuracy assumptions, and escalation rates require empirical validation. The case also depends on institution-specific conditions, including Mayo Clinic's data environment, brand position, clinical review capacity, and cloud strategy. A different institution would likely make different choices.
+
+Even with those limits, the case offers a general lesson. Clinical AI design should begin with the managed system, not the model. The question is not only what the model can say. The question is who can rely on it, under what evidence, with what controls, at what cost, and with what consequences if it is wrong.

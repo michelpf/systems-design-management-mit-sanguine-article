@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+\geometry{margin=1in}
+
+\title{Designing Clinical AI as a Managed System: A Systems Design and Management Case Study from MIT}
+\author{Michel P. Ferreira\\
+\textit{MIT Systems Design and Management}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\keywords{systems design, systems engineering, engineering management, complex systems, MIT SDM}
+
+\input{sections/introduction}
+\input{sections/background}
+\input{sections/method}
+\input{sections/case}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\bibliographystyle{unsrtnat}
+\bibliography{references/references}
+
+\end{document}
